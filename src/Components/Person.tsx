@@ -1,16 +1,12 @@
 import {FC, useState, ChangeEvent}  from 'react';
-import Form from 'react-bootstrap/Form';
 import { InputGroup } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import { UserProps } from '../Types/Interfaces';
 
 
-export interface Props {
-    name: string;
-    age : number;
-    email: string;    
-}
 
-export const Person : FC<Props> =({name,age,email}) =>{
+
+export const Person : FC<UserProps> =({name,age,email,job}) =>{
     const [country, setCountry] = useState<string | null>("")
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setCountry(event.target.value);
@@ -28,6 +24,7 @@ export const Person : FC<Props> =({name,age,email}) =>{
         <input placeholder='Enter your Country' onChange={handleInputChange} />
         {country}
     </InputGroup>
+    <Card.Title>Job : {job}</Card.Title>
       </Card.Body>
     </Card>
     
